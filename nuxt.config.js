@@ -21,7 +21,16 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    './assets/sass/application.sass', // ここで bulma や shogi-player のスタイルを読み込む
   ],
+
+  // yarn add --dev @nuxtjs/style-resources で使えるようになる
+  // これを指定しないと +tablet や $primary が参照できない
+  styleResources: {
+    sass: [
+      './assets/sass/styleResources.scss', // sass の項目に scss のファイルを与えないと読み込まれないのは謎
+    ],
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -32,6 +41,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources',  // これを指定しないと +tablet や $primary が参照できない
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -42,5 +52,23 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    transpile: [
+      'shogi-player', // これを追加しないとクラス定数や '??' パースでこける
+    ],
+
+    // これを追加しないと wav の読み込みでこける
+    extend (config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|mp4|m4a|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'blob/[name]-[contenthash].[ext]',
+        },
+      })
+      config.module.rules.push({
+        test: /\.(txt|md|kif|ki2|csa|sfen)$/,
+        loader: 'raw-loader',
+      })
+    },
+  },
 }
