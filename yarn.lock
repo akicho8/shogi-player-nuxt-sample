@@ -2169,10 +2169,17 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.16.6, browserslist@^4
     node-releases "^1.1.77"
     picocolors "^0.2.1"
 
-buefy@^0.9.10, buefy@^0.9.8:
+buefy@^0.9.10:
   version "0.9.10"
   resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.10.tgz#17f64ee1ba43a145d1d3c56f45cba95e4e2975fa"
   integrity sha512-xXEoy/NTgBNiIfBTCdHi2Vu5SJJdB046py6ekUvYuUgYwRvulySZksdecVNNWdfEVU8iD4esZaRbTLwCegFcVQ==
+  dependencies:
+    bulma "0.9.3"
+
+buefy@^0.9.13:
+  version "0.9.14"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.14.tgz#f0441ece5255fa757bf9956761415341d18fe68b"
+  integrity sha512-4+8xLQBHm7H+XmCNXvEmFY01gYHvGIkMGBLxcCpbumrt5Eyj21JP7I6G313tLaT2XDk06IiNSnqgPxzFExHPjQ==
   dependencies:
     bulma "0.9.3"
 
@@ -7742,13 +7749,13 @@ shell-quote@^1.6.1:
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
-shogi-player@^0.0.302:
-  version "0.0.302"
-  resolved "https://registry.yarnpkg.com/shogi-player/-/shogi-player-0.0.302.tgz#e122909a7133012afb3c6a3f23fabd39c03ff81d"
-  integrity sha512-FRcOj0IuDug3ys0S0HUvBS/q2eO6lJxLTt0WhIKopGUbeXa4P5yjY30zYgph6EGM2EaYirfw4TSrG7HWpJ4aTw==
+shogi-player@^0.0.313:
+  version "0.0.313"
+  resolved "https://registry.yarnpkg.com/shogi-player/-/shogi-player-0.0.313.tgz#b5825d9dffb9871527eec2e9bdbfdcb371bba3b7"
+  integrity sha512-tBzNOvJ06FgSMFHyQRd5udW1Mn2fOzUtF2Dgw2HolczGLdN9GrmX+sTZ3Qe9/87hLqRg3U0Qnq3iQvVHfvAL5w==
   dependencies:
     autolinker latest
-    buefy "^0.9.8"
+    buefy "^0.9.13"
     bulma "^0.9.3"
     chroma-js "^2.1.0"
     dayjs latest
