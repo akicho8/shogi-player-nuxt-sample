@@ -52,10 +52,25 @@ export default {
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
+  // https://ja.nuxtjs.org/api/configuration-build/#transpile
   build: {
     transpile: [
       'shogi-player', // これを追加しないとクラス定数や '??' パースでこける
     ],
+
+    // オーディオファイルをロードするように Webpack の設定を拡張するには？
+    // https://ja.nuxtjs.org/faq/webpack-audio-files/
+    //
+    //   <audio :src="require("@/assets/water.mp3")" controls></audio>
+    //   <audio src="@/assets/water.mp3" controls></audio>
+    //
+    // loaders: {
+    //   vue: {
+    //     transformAssetUrls: {
+    //       audio: "src"
+    //     }
+    //   }
+    // },
 
     // これを追加しないと wav の読み込みでこける
     extend (config, ctx) {
@@ -64,6 +79,10 @@ export default {
         loader: 'file-loader',
         options: {
           name: 'blob/[name]-[contenthash].[ext]',
+          // https://github.com/webpack-contrib/file-loader#esmodule
+          // require("path/to/xxx.wav") が { default: '/_nuxt/blob/xxx.wav', __esModule: true, ...} になってしまう対策
+          // false にすると '/_nuxt/blob/xxx.wav' になる
+          esModule: false,
         },
       })
       config.module.rules.push({
